@@ -28,17 +28,6 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <!--        配置管理-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-        <!--        提前加载-->
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
-        </dependency>
 
         <!--        服务发现 -->
         <dependency>

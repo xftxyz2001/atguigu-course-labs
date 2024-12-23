@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RefreshScope
+//@RefreshScope
 @RestController
 public class OrderController {
 
