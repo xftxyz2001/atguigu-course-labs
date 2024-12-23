@@ -19,17 +19,6 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @Value("${order.timeout:777}")
-    String orderTimeout;
-    @Value("${order.auto-confirm:888}")
-    String orderAutoConfirm;
-
-    @GetMapping("/config")
-    public String config(){
-
-        return "超时："+orderTimeout +"; 自动确认："+orderAutoConfirm;
-    }
-
     //创建订单
     @GetMapping("/create")
     public Order createOrder(@RequestParam("userId") Long userId,
