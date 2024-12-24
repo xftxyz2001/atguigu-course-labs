@@ -2,6 +2,7 @@ package com.atguigu.order.controller;
 
 
 import com.atguigu.order.bean.Order;
+import com.atguigu.order.properties.OrderProperties;
 import com.atguigu.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-//@RefreshScope
+//@RefreshScope//自动刷新
 @RestController
 public class OrderController {
 
@@ -19,6 +20,18 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
+//    @Value("${order.timeout}")
+//    String orderTimeout;
+//    @Value("${order.auto-confirm}")
+//    String orderAutoConfirm;
+
+    @Autowired
+    OrderProperties orderProperties;
+
+    @GetMapping("/config")
+    public String config(){
+        return "order.timeout="+orderProperties.getTimeout()+"； order.auto-confirm="+orderProperties.getAutoConfirm();
+    }
     //创建订单
     @GetMapping("/create")
     public Order createOrder(@RequestParam("userId") Long userId,
