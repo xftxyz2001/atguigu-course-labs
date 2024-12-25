@@ -15,4 +15,5 @@ public class OrderProperties {
 
     String autoConfirm;
 
+    String dbUrl;
 }
