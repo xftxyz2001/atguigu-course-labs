@@ -14,6 +14,8 @@ import org.springframework.context.annotation.Bean;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+
+@EnableFeignClients //开启Feign远程调用功能
 @EnableDiscoveryClient
 @SpringBootApplication
 public class OrderMainApplication {
