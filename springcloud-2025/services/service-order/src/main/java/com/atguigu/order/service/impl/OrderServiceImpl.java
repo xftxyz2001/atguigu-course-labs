@@ -30,9 +30,11 @@ public class OrderServiceImpl implements OrderService {
     @Autowired //一定导入 spring-cloud-starter-loadbalancer
     LoadBalancerClient loadBalancerClient;
 
+
     @Override
     public Order createOrder(Long productId, Long userId) {
         Product product = getProductFromRemoteWithLoadBalanceAnnotation(productId);
+
         Order order = new Order();
         order.setId(1L);
         // 总金额
