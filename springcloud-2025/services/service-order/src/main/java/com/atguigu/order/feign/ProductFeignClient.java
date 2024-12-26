@@ -16,4 +16,5 @@ public interface ProductFeignClient {
     @GetMapping("/product/{id}")
     Product getProductById(@PathVariable("id") Long id);
 
+
 }
