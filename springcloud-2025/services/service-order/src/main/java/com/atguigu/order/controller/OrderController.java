@@ -4,6 +4,7 @@ package com.atguigu.order.controller;
 import com.atguigu.order.bean.Order;
 import com.atguigu.order.properties.OrderProperties;
 import com.atguigu.order.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
+
+@Slf4j
 //@RefreshScope//自动刷新
 @RestController
 public class OrderController {
@@ -57,6 +60,7 @@ public class OrderController {
 
     @GetMapping("/readDb")
     public String readDb(){
+        log.info("readDb...");
         return "readDb success....";
     }
 
