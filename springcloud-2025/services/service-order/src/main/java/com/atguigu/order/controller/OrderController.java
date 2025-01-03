@@ -41,4 +41,23 @@ public class OrderController {
         Order order = orderService.createOrder(productId, userId);
         return order;
     }
+
+    @GetMapping("/seckill")
+    public Order seckill(@RequestParam("userId") Long userId,
+                             @RequestParam("productId") Long productId){
+        Order order = orderService.createOrder(productId, userId);
+        order.setId(Long.MAX_VALUE);
+        return order;
+    }
+
+    @GetMapping("/writeDb")
+    public String writeDb(){
+        return "writeDb success....";
+    }
+
+    @GetMapping("/readDb")
+    public String readDb(){
+        return "readDb success....";
+    }
+
 }
