@@ -27,7 +27,7 @@ public class ProductController {
         String header = request.getHeader("X-Token");
         System.out.println("hello .... token=【"+header+"】");
         Product product = productService.getProductById(productId);
-        int i = 10/0;
+//        int i = 10/0;
 //        try {
 //            TimeUnit.SECONDS.sleep(2);
 //        } catch (InterruptedException e) {

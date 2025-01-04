@@ -1,10 +1,13 @@
 package com.atguigu.order.controller;
 
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.atguigu.order.bean.Order;
 import com.atguigu.order.properties.OrderProperties;
 import com.atguigu.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -46,10 +49,20 @@ public class OrderController {
     }
 
     @GetMapping("/seckill")
-    public Order seckill(@RequestParam("userId") Long userId,
-                             @RequestParam("productId") Long productId){
+    @SentinelResource(value = "seckill-order",fallback = "seckillFallback")
+    public Order seckill(@RequestParam(value = "userId",required = false) Long userId,
+                             @RequestParam(value = "productId",defaultValue = "1000") Long productId){
         Order order = orderService.createOrder(productId, userId);
         order.setId(Long.MAX_VALUE);
+        return order;
+    }
+
+    public Order seckillFallback(Long userId,Long productId, BlockException exception){
+        System.out.println("seckillFallback....");
+        Order order = new Order();
+        order.setId(productId);
+        order.setUserId(userId);
+        order.setAddress("异常信息："+exception.getClass());
         return order;
     }
 
