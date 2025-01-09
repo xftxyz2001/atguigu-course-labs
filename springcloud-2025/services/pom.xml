@@ -13,10 +13,6 @@
     <modules>
         <module>service-product</module>
         <module>service-order</module>
-        <module>seata-order</module>
-        <module>seata-storage</module>
-        <module>seata-account</module>
-        <module>seata-business</module>
     </modules>
     <artifactId>services</artifactId>
     <properties>
